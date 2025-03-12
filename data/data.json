@@ -1,0 +1,21 @@
+{
+    "2025-03-03": [
+        {
+            "title": "Team Meeting",
+            "time": "10:00 AM",
+            "description": "Weekly sync-up meeting with the team."
+        }
+    ],
+    "2025-03-04": [
+        {
+            "title": "Weightlifting Comp",
+            "time": "2:00 PM",
+            "description": "Weightlifting Competition down in San Leandro."
+        },
+        {
+            "title": "Dinner with Friends",
+            "time": "6:00 PM",
+            "description": "Meeting friends at a local restaurant."
+        }
+    ]
+}

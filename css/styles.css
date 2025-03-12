@@ -1,0 +1,174 @@
+body{
+background-color: rgb(242, 242, 230);
+}
+
+@font-face {
+    font-family: 'week-header-font';
+    src: url('../fonts/BenedictSansLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'month-header-font';
+    src: url('../fonts/BenedictSansBold.otf') format('opentype');
+}
+
+.calendar{
+    display:inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.calendar-container{
+    background-color: rgb(203, 211, 216);
+}
+
+.calendar-row{
+    display:flex;
+    flex-direction: row;
+}
+
+.calendar-box{
+    width:130px;
+    height:110px;
+    background-color: rgb(203, 211, 216) ;
+    margin: 2px;
+    border-radius: 2px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.is-a-day {
+    background-color: rgb(238, 245, 248);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align text at the top */
+    position: relative; /* Needed for absolute positioning */
+    color: rgb(83, 83, 83);
+    transition: background-color 0.2s ease-in-out;
+    padding: 5px;
+}
+
+.is-a-day .day-number {
+    position: absolute;
+    font-family:"week-header-font";
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.is-a-day .day-button{
+    position: absolute;
+    font-size:10px;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height:20px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out ;
+}
+.is-a-day:hover .day-button{
+    opacity: 1
+}
+
+.is-a-day:hover{
+    background-color: rgb(218, 222, 233);
+}
+
+.week-header{
+    display:flex;
+    flex-direction: row;
+    margin:10px
+}
+.week-text{
+    text-align: center;
+    width: 132px;
+    height: 35px;
+    font-family:"week-header-font";
+    font-size: 24px;
+    color:rgb(45, 45, 45);
+}
+.month-header{
+    text-align: center;
+    font-family:"week-header-font";
+    font-size: 80px
+}
+.arrow-container {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;            
+    margin: 20px;            
+    width: 90%        
+}
+.arrow{
+    border: None;
+    background-color: transparent;
+    font-size:40px;
+    transition:font-size .2s ease-in-out
+}
+.arrow:hover{
+    font-size:48px;
+}
+.notes-container{
+    margin-top: 20px;
+    width: 100%;
+    height:80%
+}
+.input-box {
+    height: 300px;
+    width: 250px;
+    background-color: rgb(255, 255, 255);
+    opacity: 0;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border-radius: 4px;
+    transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+    display:inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.input-box.show{
+    top: 50%;
+    opacity:.85;
+    pointer-events: auto;
+}
+.input-box.show + .calendar{
+    filter: blur(5px);
+    transition: filter 0.5s ease-in-out;
+}
+.input-text{
+    margin: 5px;
+    height:30px;
+    width:150px;
+    border:None;
+    background-color: rgb(242, 242, 242);
+    font-family: "week-header-font";
+    font-size: 20px;
+    padding-left: 5px;
+}
+.input-button{
+    margin:5px;
+    border:None;
+    background-color: rgb(199, 199, 199);
+    height: 30px;
+    transition: background-color .3s ease-in-out;
+}
+.input-button:hover{
+    background-color: rgb(179, 179, 179);;
+}
+.date-title{
+    font-family:"month-header-font";
+    font-size:40px;
+}
