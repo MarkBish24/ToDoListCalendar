@@ -10,8 +10,15 @@ const dateTitle = document.querySelector('.date-title')
 
 let date = new Date()
 let currentDate = date
+let date_data
 
-changeMonth(currentDate)
+fetch('../data/data.json').then(response => response.json())
+.then(data => {
+    date_data = data
+    changeMonth(currentDate)
+
+})
+
 
 function changeMonth(date){
     let month = date.toLocaleString('en-US', { month: 'long' });
@@ -53,8 +60,31 @@ function changeMonth(date){
             let notesContainer = document.createElement('div');
             notesContainer.classList.add('notes-container');
             calendarBoxes[boxIndex].appendChild(notesContainer)
+
+            addNoteToCalendar(selectedDate, calendarBoxes[boxIndex])
         }
     }
+}
+
+function addNoteToCalendar(temp_date, calendarBox){
+    const date = new Date(temp_date);
+    const dateKey = date.toISOString().split('T')[0];
+    if (dateKey in date_data){
+        for (let note of date_data[dateKey]){
+            let noteElement = createNote(note)
+            calendarBox.querySelector('.notes-container').appendChild(noteElement)
+        }
+    }
+    else{
+        return
+    }
+}
+
+function createNote(note){
+    let noteElement = document.createElement("div")
+    noteElement.classList.add('note-box')
+    noteElement.textContent = note.title
+    return noteElement
 }
 
 noteSubmitButton.addEventListener('click', () =>{
